@@ -1,35 +1,16 @@
+mod action;
+mod app;
+mod cli;
+mod components;
+mod tui;
+
 use clap::Parser;
 
-#[derive(Parser)]
-#[command(name = "clapping")]
-struct Cli {
-    #[arg(short, long)]
-    algorithm: String,
-    #[arg(short = 'n', long, default_value = "10")]
-    size: usize,
-}
-
-const BANNER: &str = r#"
-    /\_____/\
-   /  o   o  \
-  ( ==  ^  == )
-   )         (
-  (           )
- ( (  )   (  ) )
-(__(__)___(__)__)
-
-  ┌─────────────────────────────┐
-  │   algoviz v0.1.0            │
-  │   algorithm visualizer      │
-  └─────────────────────────────┘
-"#;
-
 fn main() {
-    let cli = Cli::parse();
-
-    println!("{}", BANNER);
-    println!("algorithm: {}", cli.algorithm);
-    println!("size : {}", cli.size);
-    println!();
-    println!("starting!");
+    let cli = cli::Cli::parse();
+    let mut terminal = tui::init();
+    // algorithm/size 없으면 인터랙티브 선택 화면으로 시작
+    let mut app = app::App::new(cli.algorithm, cli.size);
+    app.run(&mut terminal).expect("app error");
+    tui::restore();
 }
