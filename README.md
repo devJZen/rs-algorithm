@@ -28,7 +28,7 @@ i usually solve for algorithm with Map and HashMap thesedays but i need expandin
 ## Reference
 
 Inspired by [ratatui's tutorials](https://ratatui.rs/tutorials/videos/)
-and [ratatui's examples](https://ratatui.rs/examples/apps/)
+and [ratatui's examples](https://ratatui.rs/examples/apps/) also [ratatui's showcase](https://ratatui.rs/showcase/apps/)
 
 Sorting and Searching Wiki
 
